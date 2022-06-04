@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>pl.klolo</groupId>
+        <artifactId>enterprise-archunit</artifactId>
+        <version>0.0.1</version>
+    </parent>
+
+    <artifactId>enterprise-archunit-example-usage</artifactId>
+    <packaging>jar</packaging>
+
+    <properties>
+        <java.version>11</java.version>
+    </properties>
+
+    <!-- This part is example of usage of mojo plugin.
+        During build process archtest will be executed.
+    -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>pl.klolo</groupId>
+                <artifactId>enterprise-archunit-mojo</artifactId>
+                <configuration>
+                    <ruleSet>
+                        <param>pl.klolo.archtests.example.rules.DomainModuleTestsRuleSet</param>
+                    </ruleSet>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>pl.klolo</groupId>
+                        <artifactId>enterprise-archunit-example-rules</artifactId>
+                        <version>${project.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>archtest</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

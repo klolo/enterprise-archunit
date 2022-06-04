@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="enterprise-archunit-mojo" />
+        <module name="enterprise-archunit-example-usage" />
+        <module name="enterprise-archunit-example-rules" />
+        <module name="enterprise-archunit-ruleset-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="enterprise-archunit (1)" target="1.5" />
+      <module name="enterprise-archunit (2)" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
