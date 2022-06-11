@@ -16,6 +16,7 @@ import java.util.stream.Stream;
  * Create in runtime junit tests as a DynamicTest stream,
  * based on selected class with Archunit rules.
  */
+@SuppressWarnings("NewClassNamingConvention")
 @Slf4j
 @Builder
 public class JunitTestFromArchRulesFactory {
@@ -27,7 +28,7 @@ public class JunitTestFromArchRulesFactory {
     @TestFactory
     public Stream<DynamicTest> createTests(JavaClasses classes, Set<String> disabledRules) {
         validateParams();
-        return ruleSet.rules()
+        return ruleSet.getRules()
                 .stream()
                 .filter(rule -> disabledRules == null || !disabledRules.contains(rule.getName()))
                 .map(rule -> configureRuleWithRuleSetCommonSettings(rule, ruleSet))
