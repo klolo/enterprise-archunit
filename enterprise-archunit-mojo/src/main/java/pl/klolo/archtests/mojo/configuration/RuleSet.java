@@ -7,10 +7,10 @@ import java.util.Set;
 @Data
 public class RuleSet {
 
-    private String rulesetClass;
+    private String clazz;
 
-    private String applyToPackage;
+    private String applyTo;
 
-    private Set<String> disableRule;
+    private Set<String> disabled;
 
 }

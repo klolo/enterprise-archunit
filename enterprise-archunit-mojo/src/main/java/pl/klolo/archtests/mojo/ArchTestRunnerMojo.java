@@ -10,17 +10,16 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.junit.jupiter.api.DynamicTest;
 import pl.klolo.archtests.mojo.configuration.ConfigurationParser;
-import pl.klolo.archtests.mojo.configuration.RuleSetsConfiguration;
 import pl.klolo.archtests.mojo.junit.JunitLauncher;
 import pl.klolo.archtests.mojo.junit.JunitTestBridge;
 import pl.klolo.archtests.mojo.junit.JunitTestFromArchRulesFactory;
 import pl.klolo.archtests.mojo.reflection.ClassFinder;
 import pl.klolo.archtests.mojo.reflection.TargetClassLoaderExecutor;
 import pl.klolo.archtests.ruleset.api.EnterpriseArchTestRuleSet;
+import pl.klolo.archtests.ruleset.api.SkipArchitectureValidation;
 
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -29,15 +28,6 @@ import java.util.stream.Stream;
  */
 @Mojo(name = "archtest", defaultPhase = LifecyclePhase.TEST)
 public class ArchTestRunnerMojo extends AbstractMojo {
-
-    private String basePackage = "pl.klolo.arch.tests";
-
-    /**
-     * If true generation will be executed for yaml files not split by module.
-     */
-    @Setter
-    @Parameter(required = true)
-    private String[] ruleSet;
 
     @Setter
     @Parameter(required = false, defaultValue = "archtest-config.yaml")
@@ -70,19 +60,20 @@ public class ArchTestRunnerMojo extends AbstractMojo {
         var testStreams = new LinkedList<Stream<DynamicTest>>();
 
         for (var ruleSet : configuration.getRulesets()) {
-            var ruleSetInstance = createRuleSetClassInstance(ruleSet.getRulesetClass());
+            var ruleSetInstance = createRuleSetClassInstance(ruleSet.getClazz());
 
             testStreams.add(JunitTestFromArchRulesFactory.builder()
-                    .basePackage(ruleSet.getApplyToPackage())
+                    .basePackage(ruleSet.getApplyTo())
                     .ruleSet(ruleSetInstance)
                     .build()
                     .createTests(
                             new ClassFileImporter().importClasses(
                                     targetClasses.stream()
-                                            .filter(it -> it.getPackage().getName().startsWith(ruleSet.getApplyToPackage()))
+                                            .filter(it -> it.getPackage().getName().startsWith(ruleSet.getApplyTo()))
+                                            .filter(it -> it.getDeclaredAnnotation(SkipArchitectureValidation.class) == null)
                                             .collect(Collectors.toList())
                             ),
-                            ruleSet.getDisableRule()
+                            ruleSet.getDisabled()
                     )
             );
         }

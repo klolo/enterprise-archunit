@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 @Builder
 @RequiredArgsConstructor
 public class EnterpriseArchRule {
+
     private final String name;
+
     private final ArchRule rule;
+
 }

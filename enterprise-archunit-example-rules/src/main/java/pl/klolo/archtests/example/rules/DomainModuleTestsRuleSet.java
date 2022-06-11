@@ -1,6 +1,5 @@
 package pl.klolo.archtests.example.rules;
 
-import lombok.Getter;
 import pl.klolo.archtests.ruleset.api.EnterpriseArchRule;
 import pl.klolo.archtests.ruleset.api.EnterpriseArchTestRuleSet;
 
@@ -15,14 +14,11 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
  */
 public class DomainModuleTestsRuleSet implements EnterpriseArchTestRuleSet {
 
-    @Getter
-    private final String name = "DomainArchTestRuleSet";
-
     @Override
     public List<EnterpriseArchRule> rules() {
         return Arrays.asList(
                 EnterpriseArchRule.builder()
-                        .name("domainClassesImplementsSerializable")
+                        .name("domain_classes_implements_Serializable")
                         .rule(
                                 classes()
                                         .should()
