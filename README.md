@@ -1,10 +1,10 @@
 # enterprise-archunit
 
-## about
+## About
 
-https://archunit.org[Archunit] is great tool for testing your architecture. Works perfectly when you have monolith and architecture tests next to the other kind of tests. Unfortunately, when you work in big company need sometime execute the same set of aerch tests on multiple projects for ensure that all of them are consistent. I created this maven plugin for simplify this proces.  
+[https://archunit.org](Archunit) is great tool for testing your architecture. Works perfectly when you have monolith and architecture tests next to the other kind of tests. Unfortunately, when you work in big company need sometime execute the same set of aerch tests on multiple projects for ensure that all of them are consistent. I created this maven plugin for simplify this proces.  
 
-## project structure
+## Project structure
 
 enterprise-archunit
     |- enterprise-archunit-ruleset-api - contains API for implementation tests set, without no external dependencies
@@ -13,7 +13,7 @@ enterprise-archunit
     |- enterprise-archunit-example-usage - example of usage plugin in maven
 
 
-## usage
+## Usage
 
 If you want to use to aproach you have to write some rules, grouped in rule set. Each rule set class have to extend EnterpriseArchTestRuleSet. After defining rules with plain archunit, just register it with some name with method register. This name is important, while you have possibility to skip this test in yaml configuration. I will describe this configuration process later. Example of such rule set:
 
@@ -73,6 +73,8 @@ When you have created rul set build it into some jar (in this example it is: ent
 </plugins>
 ```
 
+## Configuration
+
 It is almost all. Last, required step is creating configuration file _archtest-config.yaml_ (you can override name of this by setting _configurationFile_ parameter in plugin configuration). This file will define which rule set should be executed on which package and you can disable some rule if some cases e.g in legacy code. Example of such configuration
 
 ```yaml
@@ -87,3 +89,7 @@ rulesets:
 ```
 
 Another way to disable test validation in your code is puting pl.klolo.archtests.ruleset.api.SkipArchitectureValidation annotation before your problematic class.
+
+## License
+
+It is free software for commercial usage.
