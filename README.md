@@ -2,7 +2,7 @@
 
 ## About
 
-[https://archunit.org](Archunit) is great tool for testing your architecture. Works perfectly when you have monolith and architecture tests next to the other kind of tests. Unfortunately, when you work in big company need sometime execute the same set of aerch tests on multiple projects for ensure that all of them are consistent. I created this maven plugin for simplify this proces.  
+[Archunit](https://archunit.org) is great tool for testing your architecture. Works perfectly when you have monolith and architecture tests next to the other kind of tests. Unfortunately, when you work in big company need sometime execute the same set of aerch tests on multiple projects for ensure that all of them are consistent. I created this maven plugin for simplify this proces.  
 
 ## Project structure
 
