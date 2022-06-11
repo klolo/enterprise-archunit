@@ -1,7 +1,0 @@
-pl/klolo/archtests/mojo/junit/JunitLauncher.class
-pl/klolo/archtests/mojo/junit/JunitTestFromArchRulesFactory.class
-pl/klolo/archtests/mojo/ArchTestRunnerMojo.class
-pl/klolo/archtests/mojo/reflection/TargetClassLoaderExecutor.class
-pl/klolo/archtests/mojo/junit/JunitTestFromArchRulesFactory$JunitTestFromArchRulesFactoryBuilder.class
-pl/klolo/archtests/mojo/junit/JunitTestBridge.class
-pl/klolo/archtests/mojo/reflection/ClassFinder.class

@@ -1,0 +1,5 @@
+rulesets:
+  - rulesetClass: pl.klolo.archtests.example.rules.DomainModuleTestsRuleSet
+    applyToPackage: pl.klolo.archtests.example.domain
+#    disableRule:
+#      - domainClassesImplementsSerializable

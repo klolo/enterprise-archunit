@@ -8,6 +8,8 @@ public interface EnterpriseArchTestRuleSet {
 
     List<EnterpriseArchRule> rules();
 
+    String getName();
+
     /**
      * This method allows you to configure globally all rules in set.
      */
